@@ -23,8 +23,8 @@ public class MindSetController {
     }
 
     @GetMapping("/{id}")
-    public MindSet get(@PathVariable("id") Integer id) throws NotFoundException {
-        return mindSetService.getMindSet(id);
+    public MindSet getById(@PathVariable("id") Integer id) throws NotFoundException {
+        return mindSetService.getById(id);
     }
 
     @PostMapping
@@ -39,7 +39,7 @@ public class MindSetController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") Integer id) throws NotFoundException {
-        return mindSetService.deleteMindSet(id);
+        return mindSetService.delete(id);
     }
 
 }

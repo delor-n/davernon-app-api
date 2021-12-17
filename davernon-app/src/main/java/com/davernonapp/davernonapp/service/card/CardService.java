@@ -46,12 +46,12 @@ public class CardService {
         return newCard;
     }
 
-    public Card getCard(Integer id) throws NotFoundException {
+    public Card getById(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Cette carte n'existe pas"));
     }
 
 
-    public Card editCard(Integer id, Card card) throws NotFoundException {
+    public Card update(Integer id, Card card) throws NotFoundException {
         if (card.getName() == null || card.getName().isEmpty()) {
             throw new BadRequestException("Input values can't be empty");
         }
@@ -72,8 +72,8 @@ public class CardService {
     }
 
 
-    public ResponseEntity<String> deleteCard(Integer id) throws NotFoundException {
-        Card card = this.getCard(id);
+    public ResponseEntity<String> delete(Integer id) throws NotFoundException {
+        Card card = this.getById(id);
         repository.delete(card);
         return ResponseEntity.status(HttpStatus.OK).body("La carte " + card.getName() + " a bien été supprimé");
     }

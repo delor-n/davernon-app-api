@@ -21,17 +21,16 @@ public class Card implements Serializable {
 
     @ManyToMany
     @JoinTable(
-            name = "card_mind_set",
+            name = "card_mind_set_relation",
             joinColumns = @JoinColumn(name = "cardId"),
             inverseJoinColumns = @JoinColumn(name = "mindSetId"))
     private List<MindSet> mindSetList;
     @ManyToMany
     @JoinTable(
-            name = "card_stance",
+            name = "card_stance_relation",
             joinColumns = @JoinColumn(name = "cardId"),
             inverseJoinColumns = @JoinColumn(name = "stanceId"))
     private List<Stance> stanceList;
-
 
     @Column
     private Integer speed;
@@ -61,4 +60,5 @@ public class Card implements Serializable {
     private Integer enemyVitalityModifierBax;
     @Column
     private Integer enemyStaminaModifierBax;
+
 }

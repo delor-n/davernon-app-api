@@ -23,8 +23,8 @@ public class CardController {
     }
 
     @GetMapping("/{id}")
-    public Card get(@PathVariable("id") Integer id) throws NotFoundException {
-        return cardService.getCard(id);
+    public Card getById(@PathVariable("id") Integer id) throws NotFoundException {
+        return cardService.getById(id);
     }
 
     @PostMapping
@@ -34,12 +34,12 @@ public class CardController {
 
     @PutMapping(path = "{id}")
     public Card update(@PathVariable Integer id, @RequestBody Card card) throws NotFoundException {
-        return cardService.editCard(id, card);
+        return cardService.update(id, card);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") Integer id) throws NotFoundException {
-        return cardService.deleteCard(id);
+        return cardService.delete(id);
     }
 
 }

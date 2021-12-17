@@ -31,7 +31,7 @@ public class MindSetService {
         return newMindSet;
     }
 
-    public MindSet getMindSet(Integer id) throws NotFoundException {
+    public MindSet getById(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Cette carte n'existe pas"));
     }
 
@@ -49,8 +49,8 @@ public class MindSetService {
     }
 
 
-    public ResponseEntity<String> deleteMindSet(Integer id) throws NotFoundException {
-        MindSet mindSet = this.getMindSet(id);
+    public ResponseEntity<String> delete(Integer id) throws NotFoundException {
+        MindSet mindSet = this.getById(id);
         repository.delete(mindSet);
         return ResponseEntity.status(HttpStatus.OK).body("La carte " + mindSet.getName() + " a bien été supprimé");
     }
